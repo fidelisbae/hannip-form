@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  hannip-form-app:
+    container_name: hannip-form-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - ./src:/app/src
+    ports:
+      - 3000:3000
+    restart: always
+
+  ggumim-mysql:
+    image: mysql:8.0
+    container_name: hannip-form-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 1111
+      MYSQL_DATABASE: hannip-form
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+    ports:
+      - 13306:3306
