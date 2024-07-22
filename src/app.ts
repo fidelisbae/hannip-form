@@ -2,8 +2,10 @@ import express from 'express';
 import session from 'express-session';
 import dotenv from 'dotenv';
 
-import authRouter from './routers/auth';
+import authRouter from './routers/auth.router';
 import { dataSource } from './configs/typeorm';
+import { exceptionHandler } from './middlewares/exception';
+import passport from './configs/kakao.passport';
 
 dotenv.config();
 
@@ -18,9 +20,13 @@ app.use(
     saveUninitialized: true,
   }),
 );
+app.use(passport.initialize());
+app.use(passport.session());
 dataSource.initialize();
 
 app.use('/auth', authRouter);
+
+app.use(exceptionHandler);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

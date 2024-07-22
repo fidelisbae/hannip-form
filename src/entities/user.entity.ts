@@ -7,4 +7,7 @@ export class User {
 
   @Column({ type: 'varchar' })
   email: string;
+
+  @Column({ type: 'varchar', default: '회원님' })
+  nickname: string;
 }
