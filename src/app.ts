@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 
 import passport from './configs/passport';
 import authRouter from './routers/auth.router';
+import clovaRouter from './routers/clova.router';
 import { dataSource } from './configs/typeorm';
 import { exceptionHandler } from './middlewares/exception';
 
@@ -25,6 +26,7 @@ app.use(passport.session());
 dataSource.initialize();
 
 app.use('/auth', authRouter);
+app.use('/clova', clovaRouter);
 
 app.use(exceptionHandler);
 
