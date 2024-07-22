@@ -16,6 +16,7 @@
     "mysql2": "^3.10.3",
     "passport": "^0.7.0",
     "passport-kakao": "^1.0.1",
+    "passport-naver": "^1.0.6",
     "typeorm": "^0.3.20"
   },
   "devDependencies": {
@@ -23,6 +24,7 @@
     "@types/express-session": "^1.18.0",
     "@types/passport": "^1.0.16",
     "@types/passport-kakao": "^1.0.3",
+    "@types/passport-naver": "^1.0.4",
     "@typescript-eslint/eslint-plugin": "^7.16.1",
     "@typescript-eslint/parser": "^7.16.1",
     "eslint": "^9.7.0",

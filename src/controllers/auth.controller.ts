@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-import passport from '../configs/kakao.passport';
+import passport from '../configs/passport';
 
 export async function kakaoLogin(
   req: Request,
@@ -16,6 +16,35 @@ export async function kakaoLogin(
 
 export function kakaoCallback(req: Request, res: Response, next: NextFunction) {
   passport.authenticate('kakao', (err, user, info) => {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      return res.status(401).json({ message: info.message || 'Login failed' });
+    }
+    req.logIn(user, (err) => {
+      if (err) {
+        return next(err);
+      }
+      return res.status(200).json({ message: 'Successfully login' });
+    });
+  })(req, res, next);
+}
+
+export async function naverLogin(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) {
+  try {
+    passport.authenticate('naver')(req, res, next);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export function naverCallback(req: Request, res: Response, next: NextFunction) {
+  passport.authenticate('naver', (err, user, info) => {
     if (err) {
       return next(err);
     }

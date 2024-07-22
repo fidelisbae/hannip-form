@@ -2,10 +2,10 @@ import express from 'express';
 import session from 'express-session';
 import dotenv from 'dotenv';
 
+import passport from './configs/passport';
 import authRouter from './routers/auth.router';
 import { dataSource } from './configs/typeorm';
 import { exceptionHandler } from './middlewares/exception';
-import passport from './configs/kakao.passport';
 
 dotenv.config();
 
