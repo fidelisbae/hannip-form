@@ -73,11 +73,3 @@ export async function logout(req: Request, res: Response, next: NextFunction) {
     next(error);
   }
 }
-
-export async function profile(req: Request, res: Response, next: NextFunction) {
-  try {
-    return res.status(200).json(req.user);
-  } catch (error) {
-    next(error);
-  }
-}
