@@ -1,20 +1,22 @@
 import passport from 'passport';
 import { Request, Response, NextFunction } from 'express';
 
-import { User } from '../entities/user.entity';
 import { dataSource } from './typeorm';
 import { kakaoStrategy } from '../strategies/kakao.strategy';
 import { naverStrategy } from '../strategies/naver.strategy';
+import { RequestUser } from '../types/request';
 
-passport.serializeUser((user: User, done) => {
+passport.serializeUser((user: RequestUser, done) => {
   done(null, user.email);
 });
 
 passport.deserializeUser(async (email, done) => {
   const userRepository = dataSource.getRepository('User');
-  const user = await userRepository.findOne({ where: { email } });
+  const user = (await userRepository.findOne({
+    where: { email },
+  })) as RequestUser;
 
-  done(null, user || null);
+  done(null, user);
 });
 
 passport.use(kakaoStrategy);
