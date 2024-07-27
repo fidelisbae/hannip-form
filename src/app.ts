@@ -1,6 +1,7 @@
 import express from 'express';
 import session from 'express-session';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 import passport from './configs/passport';
 import authRouter from './routers/auth.router';
@@ -40,6 +41,13 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(
+  cors({
+    origin: 'https://hannip-form.vercel.app',
+    credentials: true,
+  }),
+);
+
 dataSource.initialize();
 
 app.use('/auth', authRouter);
