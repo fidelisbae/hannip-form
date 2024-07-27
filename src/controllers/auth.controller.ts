@@ -26,7 +26,7 @@ export function kakaoCallback(req: Request, res: Response, next: NextFunction) {
       if (err) {
         return next(err);
       }
-      return res.status(200).json({ message: 'Successfully login' });
+      return res.redirect('https://hannip-form.vercel.app/auth');
     });
   })(req, res, next);
 }
@@ -55,7 +55,7 @@ export function naverCallback(req: Request, res: Response, next: NextFunction) {
       if (err) {
         return next(err);
       }
-      return res.status(200).json({ message: 'Successfully login' });
+      return res.redirect('https://hannip-form.vercel.app/auth');
     });
   })(req, res, next);
 }
