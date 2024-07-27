@@ -14,6 +14,7 @@ export const naverStrategy = new NaverStrategy(
 
       const email = profile.emails[0].value;
       const nickname = profile.displayName;
+      const profile_image_url = profile._json.profile_image;
 
       const existUser = await userRepository.findOne({
         where: { email },
@@ -23,6 +24,7 @@ export const naverStrategy = new NaverStrategy(
         const user = await userRepository.save({
           email,
           nickname,
+          profile_image_url,
         });
 
         return done(null, user);

@@ -18,6 +18,8 @@ export const kakaoStrategy = new KakaoStrategy(
 
       const email = profile._json.kakao_account.email;
       const nickname = profile._json.kakao_account.profile.nickname;
+      const profile_image_url =
+        profile._json.kakao_account.profile.profile_image_url;
 
       const existUser = await userRepository.findOne({
         where: { email },
@@ -27,6 +29,7 @@ export const kakaoStrategy = new KakaoStrategy(
         const user = await userRepository.save({
           email,
           nickname,
+          profile_image_url,
         });
 
         return done(null, user);
