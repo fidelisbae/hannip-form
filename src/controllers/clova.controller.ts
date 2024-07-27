@@ -294,7 +294,6 @@ export async function createScript(
         {
           role: 'user',
           content: `해당 내용으로 숏폼 대본을 만들어줘
-                    ${trend}가 제목에 필수로 들어가야 한다
                   
                     주제: ${idea}
                     필수 요소: ${essential}
@@ -304,6 +303,8 @@ export async function createScript(
                     말투: ${tone}
                     사투리: ${accent}
                     유행어: ${trend}
+
+                    제목에는 반드시 ${trend}가 들어가야 합니다.,
                     `,
         },
       ],
