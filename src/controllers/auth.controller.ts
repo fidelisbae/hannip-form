@@ -26,6 +26,13 @@ export function kakaoCallback(req: Request, res: Response, next: NextFunction) {
       if (err) {
         return next(err);
       }
+
+      res.cookie('user', JSON.stringify(user), {
+        httpOnly: true,
+        secure: false,
+        sameSite: 'none',
+        domain: 'vercel.app',
+      });
       return res.redirect('https://hannip-form.vercel.app/auth');
     });
   })(req, res, next);
@@ -55,6 +62,13 @@ export function naverCallback(req: Request, res: Response, next: NextFunction) {
       if (err) {
         return next(err);
       }
+
+      res.cookie('user', JSON.stringify(user), {
+        httpOnly: true,
+        secure: false,
+        sameSite: 'none',
+        domain: 'vercel.app',
+      });
       return res.redirect('https://hannip-form.vercel.app/auth');
     });
   })(req, res, next);
