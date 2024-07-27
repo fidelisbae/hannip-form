@@ -38,10 +38,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     cookie: {
-      httpOnly: true,
-      secure: false,
       sameSite: 'none',
-      domain: 'vercel.app',
     },
   }),
 );

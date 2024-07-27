@@ -27,13 +27,12 @@ export function kakaoCallback(req: Request, res: Response, next: NextFunction) {
         return next(err);
       }
 
-      res.cookie('user', JSON.stringify(user), {
-        httpOnly: true,
-        secure: false,
-        sameSite: 'none',
-        domain: 'vercel.app',
-      });
-      return res.redirect('https://hannip-form.vercel.app/auth');
+      return res
+        .cookie('user', JSON.stringify(user), {
+          sameSite: 'none',
+          domain: 'hannip-form.vercel.app',
+        })
+        .redirect('https://hannip-form.vercel.app/auth');
     });
   })(req, res, next);
 }
