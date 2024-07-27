@@ -37,6 +37,12 @@ app.use(
     secret: 'secret',
     resave: false,
     saveUninitialized: true,
+    cookie: {
+      httpOnly: true,
+      secure: false,
+      sameSite: 'none',
+      domain: 'vercel.app',
+    },
   }),
 );
 app.use(passport.initialize());
