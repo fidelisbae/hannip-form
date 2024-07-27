@@ -5,14 +5,14 @@ import passport from '../configs/passport';
 
 const router = express.Router();
 
-router.route('/kakao/login').post(passport.authenticate('kakao'));
+router.route('/kakao/login').get(passport.authenticate('kakao'));
 router
   .route('/kakao/callback')
-  .post(
+  .get(
     passport.authenticate('kakao', { session: false }),
     controller.kakaoCallback,
   );
-router.route('/naver/login').post(passport.authenticate('naver'));
+router.route('/naver/login').get(passport.authenticate('naver'));
 router
   .route('/naver/callback')
   .get(
