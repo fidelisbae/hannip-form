@@ -26,16 +26,28 @@ export const kakaoStrategy = new KakaoStrategy(
       });
 
       if (!existUser) {
-        const user = await userRepository.save({
+        const newUser = await userRepository.save({
           email,
           nickname,
           profile_image_url,
         });
 
+        const user = {
+          id: newUser.id,
+          email: newUser.email,
+          nickname: newUser.nickname,
+        };
+
+        return done(null, user);
+      } else {
+        const user = {
+          id: existUser.id,
+          email: existUser.email,
+          nickname: existUser.nickname,
+        };
+
         return done(null, user);
       }
-
-      return done(null, existUser);
     } catch (error) {
       done(error);
     }

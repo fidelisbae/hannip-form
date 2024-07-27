@@ -17,7 +17,7 @@ dotenv.config();
 declare global {
   namespace Express {
     interface User {
-      id: string;
+      id: number;
       nickname: string;
       email: string;
     }
@@ -38,19 +38,7 @@ app.use(
     credentials: true,
   }),
 );
-app.use(
-  session({
-    secret: 'secret',
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-      sameSite: 'none',
-      secure: false,
-    },
-  }),
-);
 app.use(passport.initialize());
-app.use(passport.session());
 
 dataSource.initialize();
 

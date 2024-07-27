@@ -1,12 +1,18 @@
 import express from 'express';
 
 import * as controller from '../controllers/idea.controller';
-import { ensureAuthenticated } from '../configs/passport';
+import passport from '../configs/passport';
 
 const router = express.Router();
 
-router.route('/').post(ensureAuthenticated, controller.create);
-router.route('/').get(ensureAuthenticated, controller.read);
-router.route('/').delete(ensureAuthenticated, controller.remove);
+router
+  .route('/')
+  .post(passport.authenticate('jwt', { session: false }), controller.create);
+router
+  .route('/')
+  .get(passport.authenticate('jwt', { session: false }), controller.read);
+router
+  .route('/')
+  .delete(passport.authenticate('jwt', { session: false }), controller.remove);
 
 export default router;

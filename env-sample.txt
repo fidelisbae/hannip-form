@@ -5,3 +5,4 @@ NAVER_CLIENT_SECRET=네이버 클라이언트 시크릿
 SERVER_URL=서버 URL
 
 NCP_API_GATEWAY_KEY=ncp api 게이트웨이 키
+JWT_SECRET=jwt 시크릿

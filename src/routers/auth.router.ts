@@ -1,14 +1,23 @@
 import express from 'express';
 
 import * as controller from '../controllers/auth.controller';
-import { ensureAuthenticated } from '../configs/passport';
+import passport from '../configs/passport';
 
 const router = express.Router();
 
-router.route('/kakao/login').get(controller.kakaoLogin);
-router.route('/kakao/callback').get(controller.kakaoCallback);
-router.route('/naver/login').get(controller.naverLogin);
-router.route('/naver/callback').get(controller.naverCallback);
-router.route('/logout').get(controller.logout);
+router.route('/kakao/login').get(passport.authenticate('kakao'));
+router
+  .route('/kakao/callback')
+  .get(
+    passport.authenticate('kakao', { session: false }),
+    controller.kakaoCallback,
+  );
+router.route('/naver/login').get(passport.authenticate('naver'));
+router
+  .route('/naver/callback')
+  .get(
+    passport.authenticate('naver', { session: false }),
+    controller.naverCallback,
+  );
 
 export default router;
