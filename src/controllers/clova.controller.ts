@@ -5,7 +5,7 @@ import { CHUGUMI } from '../scripts/chugumi';
 import { MAGGULMA } from '../scripts/maggulma';
 import { GUJABCHAE } from '../scripts/gujabchae';
 import { LUCKYBIKI } from '../scripts/luckybiki';
-import { REMEMBER } from 'src/scripts/remember';
+import { REMEMBER } from '../scripts/remember';
 
 export async function createIdea(
   req: Request,
