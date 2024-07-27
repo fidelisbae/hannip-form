@@ -30,6 +30,7 @@ export function kakaoCallback(req: Request, res: Response, next: NextFunction) {
       return res
         .cookie('user', JSON.stringify(user), {
           sameSite: 'none',
+          secure: false,
           domain: 'hannip-form.vercel.app',
         })
         .redirect('https://hannip-form.vercel.app/auth');

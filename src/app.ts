@@ -33,23 +33,24 @@ const port = 3000;
 
 app.use(express.json());
 app.use(
+  cors({
+    origin: 'https://hannip-form.vercel.app',
+    credentials: true,
+  }),
+);
+app.use(
   session({
     secret: 'secret',
     resave: false,
     saveUninitialized: true,
     cookie: {
       sameSite: 'none',
+      secure: false,
     },
   }),
 );
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(
-  cors({
-    origin: 'https://hannip-form.vercel.app',
-    credentials: true,
-  }),
-);
 
 dataSource.initialize();
 
