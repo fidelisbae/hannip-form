@@ -13,7 +13,7 @@ export class Script {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', length: 2000 })
   content: string;
 
   @ManyToOne(() => User, (user) => user.scripts, { onDelete: 'CASCADE' })
