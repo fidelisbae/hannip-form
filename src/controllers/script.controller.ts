@@ -13,7 +13,7 @@ export async function create(req: Request, res: Response, next: NextFunction) {
       user_id: req.user.id,
     });
 
-    return res.status(201).json(idea);
+    return res.status(200).json(idea);
   } catch (error) {
     next(error);
   }
