@@ -196,18 +196,18 @@ export async function createScript(
 
     const data = {
       messages: [
-        {
-          role: 'system',
-          content: `답변은 아래 형식에 맞춰 제공해야 합니다.
+        // {
+        //   role: 'system',
+        //   content: `답변은 아래 형식에 맞춰 제공해야 합니다.
               
-                    (제목)
-                    (인트로)
+        //             (제목)
+        //             (인트로)
 
-                    영상에 어울릴 스크립트
-                    영상에 어울릴 스크립트
-                    영상에 어울릴 스크립트 (+ 엔딩)
-                    </aside>`,
-        },
+        //             영상에 어울릴 스크립트
+        //             영상에 어울릴 스크립트
+        //             영상에 어울릴 스크립트 (+ 엔딩)
+        //             </aside>`,
+        // },
         ...trendScript,
       ],
       topP: 0.8,
@@ -250,7 +250,7 @@ export async function createScript(
     const result2 = clovaResult2.result.message.content;
 
     clovaResult.result.message.content =
-      clovaResult.result.message.content + result2;
+      clovaResult.result.message.content + '\n' + result2;
 
     console.log(result2);
 
