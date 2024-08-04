@@ -200,18 +200,12 @@ export async function createScript(
           role: 'system',
           content: `답변은 아래 형식에 맞춰 제공해야 합니다.
               
-                    <aside>
-                    제목: (제목)
-                    인트로: (첫인사)
+                    (제목)
+                    (인트로)
 
-                    장면 n [화면 : 보여지는 모습 설명 문구]
                     영상에 어울릴 스크립트
-
-                    장면 n [화면 : 보여지는 모습 설명 문구]
                     영상에 어울릴 스크립트
-
-                    장면 n [화면 : 보여지는 모습 설명 문구]
-                    영상에 어울릴 스크립트 (+ 끝맺음)
+                    영상에 어울릴 스크립트 (+ 엔딩)
                     </aside>`,
         },
         ...trendScript,
@@ -230,6 +224,35 @@ export async function createScript(
 
     const clovaResult = response.data;
     const result = clovaResult.result.message.content;
+
+    const response2 = await axios.post(
+      url,
+      {
+        messages: [
+          {
+            role: 'user',
+            content: `${result}
+            대본으로 영상을 만들때 팁을 5가지 알려줘`,
+          },
+        ],
+        topP: 0.8,
+        topK: 0,
+        maxTokens: 2000,
+        temperature: 0.5,
+        repeatPenalty: 5.0,
+        stopBefore: [],
+        includeAiFilters: false,
+        seed: 0,
+      },
+      { headers },
+    );
+    const clovaResult2 = response2.data;
+    const result2 = clovaResult2.result.message.content;
+
+    clovaResult.result.message.content =
+      clovaResult.result.message.content + result2;
+
+    console.log(result2);
 
     return res.status(200).json(clovaResult);
   } catch (error) {
