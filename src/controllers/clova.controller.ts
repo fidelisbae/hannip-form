@@ -218,7 +218,10 @@ export async function createScript(
           {
             role: 'user',
             content: `${result}
-            위 대본으로 영상을 만들때 팁을 5가지 알려줘`,
+
+            위 대본으로 영상을 만들때 팁을 5가지 알려줘
+            위 대본내용에 대한 조언이 들어가야해
+            `,
           },
         ],
         topP: 0.8,
