@@ -213,7 +213,7 @@ export async function createScript(
       topP: 0.8,
       topK: 0,
       maxTokens: 2000,
-      temperature: 0.5,
+      temperature: 0.2,
       repeatPenalty: 5.0,
       stopBefore: [],
       includeAiFilters: false,
@@ -232,7 +232,7 @@ export async function createScript(
           {
             role: 'user',
             content: `${result}
-            대본으로 영상을 만들때 팁을 5가지 알려줘`,
+            위 대본으로 영상을 만들때 팁을 5가지 알려줘`,
           },
         ],
         topP: 0.8,
