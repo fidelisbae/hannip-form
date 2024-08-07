@@ -195,21 +195,7 @@ export async function createScript(
     }
 
     const data = {
-      messages: [
-        {
-          role: 'system',
-          content: `답변은 아래 형식에 맞춰 제공해야 합니다.
-              
-                    (제목)
-                    (인트로)
-
-                    영상에 어울릴 스크립트
-                    영상에 어울릴 스크립트
-                    영상에 어울릴 스크립트 (+ 엔딩)
-                    </aside>`,
-        },
-        ...trendScript,
-      ],
+      messages: [...trendScript],
       topP: 0.8,
       topK: 0,
       maxTokens: 2000,
@@ -249,12 +235,12 @@ export async function createScript(
     const clovaResult2 = response2.data;
     const result2 = clovaResult2.result.message.content;
 
-    clovaResult.result.message.content =
-      clovaResult.result.message.content + result2;
-
     console.log(result2);
 
-    return res.status(200).json(clovaResult);
+    return res.status(200).json({
+      script: result,
+      advice: result2,
+    });
   } catch (error) {
     next(error);
   }
