@@ -5,7 +5,9 @@ import passport from '../configs/passport';
 
 const router = express.Router();
 
-router.route('/kakao/login').get(passport.authenticate('kakao'));
+router
+  .route('/kakao/login')
+  .get(passport.authenticate('kakao', { session: false }));
 router
   .route('/kakao/callback')
   .get(
