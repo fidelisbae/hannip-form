@@ -9,7 +9,9 @@ export function kakaoCallback(req: Request, res: Response, next: NextFunction) {
       expiresIn: '3h',
     });
 
-    return res.redirect(`${process.env.CLIENT_URL}/auth?code=${access_token}`);
+    const encodedToken = encodeURIComponent(access_token);
+
+    return res.redirect(`${process.env.CLIENT_URL}/auth?code=${encodedToken}`);
   } catch (error) {
     next(error);
   }
@@ -21,7 +23,9 @@ export function naverCallback(req: Request, res: Response, next: NextFunction) {
       expiresIn: '3h',
     });
 
-    return res.redirect(`${process.env.CLIENT_URL}/auth?code=${access_token}`);
+    const encodedToken = encodeURIComponent(access_token);
+
+    return res.redirect(`${process.env.CLIENT_URL}/auth?code=${encodedToken}`);
   } catch (error) {
     next(error);
   }
