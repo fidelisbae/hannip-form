@@ -20,6 +20,6 @@ export class Script {
   @JoinColumn({ name: 'user_id' })
   user: User;
 
-  @Column({ type: 'int' })
-  user_id: number;
+  @Column({ type: 'varchar' })
+  user_id: string;
 }

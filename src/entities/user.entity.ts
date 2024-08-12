@@ -5,8 +5,8 @@ import { Script } from './script.entity';
 
 @Entity()
 export class User {
-  @PrimaryColumn({ type: 'int' })
-  id: number;
+  @PrimaryColumn({ type: 'varchar' })
+  id: string;
 
   @Column({ type: 'varchar', default: '회원님' })
   nickname: string;
