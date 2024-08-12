@@ -16,18 +16,18 @@ export const kakaoStrategy = new KakaoStrategy(
     try {
       const userRepository = dataSource.getRepository('User');
 
-      const email = profile._json.kakao_account.email;
+      const id = profile._json.id;
       const nickname = profile._json.kakao_account.profile.nickname;
       const profile_image_url =
         profile._json.kakao_account.profile.profile_image_url;
 
       const existUser = await userRepository.findOne({
-        where: { email },
+        where: { id },
       });
 
       if (!existUser) {
         const newUser = await userRepository.save({
-          email,
+          id,
           nickname,
           profile_image_url,
         });

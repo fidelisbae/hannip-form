@@ -3,8 +3,6 @@ import { Request, Response, NextFunction } from 'express';
 
 export function kakaoCallback(req: Request, res: Response, next: NextFunction) {
   try {
-    console.log(req.user);
-
     const access_token = jwt.sign(req.user, process.env.JWT_SECRET, {
       expiresIn: '3h',
     });

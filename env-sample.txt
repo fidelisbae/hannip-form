@@ -7,3 +7,6 @@ CLIENT_URL=클라이언트 URL
 
 NCP_API_GATEWAY_KEY=ncp api 게이트웨이 키
 JWT_SECRET=jwt 시크릿
+
+MYSQL_PASSWORD=password
+MYSQL_DATABASE=db

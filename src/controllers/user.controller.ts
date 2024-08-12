@@ -5,10 +5,10 @@ export async function read(req: Request, res: Response, next: NextFunction) {
   try {
     const userRepository = dataSource.getRepository('User');
 
-    const email = req.user.email;
+    const id = req.user.id;
 
     const user = await userRepository.findOne({
-      where: { email },
+      where: { id },
       relations: ['scripts', 'ideas'],
     });
 
@@ -22,9 +22,9 @@ export async function remove(req: Request, res: Response, next: NextFunction) {
   try {
     const userRepository = dataSource.getRepository('User');
 
-    const email = req.user.email;
+    const id = req.user.id;
 
-    await userRepository.delete({ email });
+    await userRepository.delete({ id });
 
     return res.status(200).json({ message: 'User deleted' });
   } catch (error) {

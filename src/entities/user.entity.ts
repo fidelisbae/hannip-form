@@ -1,15 +1,12 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
 
 import { Idea } from './idea.entity';
 import { Script } from './script.entity';
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
-  @Column({ type: 'varchar', unique: true })
-  email: string;
+  @PrimaryColumn({ type: 'int' })
+  id: number;
 
   @Column({ type: 'varchar', default: '회원님' })
   nickname: string;

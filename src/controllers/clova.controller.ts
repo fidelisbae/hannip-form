@@ -238,8 +238,6 @@ export async function createScript(
     const clovaResult2 = response2.data;
     const result2 = clovaResult2.result.message.content;
 
-    console.log(result2);
-
     return res.status(200).json({
       script: result,
       advice: result2,

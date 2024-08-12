@@ -9,7 +9,6 @@ export const jwtStrategy = new JwtStrategy(
     try {
       const user = {
         id: payload.id,
-        email: payload.email,
         nickname: payload.id,
       };
 

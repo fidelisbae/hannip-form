@@ -18,8 +18,8 @@ services:
     image: mysql:8.0
     container_name: hannip-form-mysql
     environment:
-      MYSQL_ROOT_PASSWORD: 1111
-      MYSQL_DATABASE: hannip-form
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
     volumes:
       - ./mysql-data:/var/lib/mysql
     ports:
