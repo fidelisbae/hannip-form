@@ -17,6 +17,12 @@ export class User {
   })
   profile_image_url: string;
 
+  @Column({ type: 'varchar', default: '' })
+  channel_description: string;
+
+  @Column({ type: 'varchar', default: '' })
+  category: string;
+
   @OneToMany(() => Idea, (idea) => idea.user)
   ideas: Idea[];
 
