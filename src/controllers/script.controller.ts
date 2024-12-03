@@ -25,6 +25,7 @@ export async function readAll(req: Request, res: Response, next: NextFunction) {
 
     const scripts = await scriptRepository.find({
       where: { user_id: req.user.id },
+      order: { created_at: 'DESC' },
     });
 
     return res.status(200).json(scripts);

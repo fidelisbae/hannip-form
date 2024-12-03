@@ -25,6 +25,7 @@ export async function read(req: Request, res: Response, next: NextFunction) {
 
     const ideas = await ideaRepository.find({
       where: { user_id: req.user.id },
+      order: { created_at: 'DESC' },
     });
 
     return res.status(200).json(ideas);
