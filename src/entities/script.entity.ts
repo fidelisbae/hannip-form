@@ -1,5 +1,6 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
@@ -15,6 +16,9 @@ export class Script {
 
   @Column({ type: 'varchar', length: 2000 })
   content: string;
+
+  @CreateDateColumn({ type: 'timestamp' })
+  created_at: Date;
 
   @ManyToOne(() => User, (user) => user.scripts, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'user_id' })

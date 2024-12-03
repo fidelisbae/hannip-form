@@ -1,5 +1,6 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
@@ -15,6 +16,9 @@ export class Idea {
 
   @Column({ type: 'varchar' })
   content: string;
+
+  @CreateDateColumn({ type: 'timestamp' })
+  created_at: Date;
 
   @ManyToOne(() => User, (user) => user.ideas, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'user_id' })
