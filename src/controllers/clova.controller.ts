@@ -82,7 +82,7 @@ export async function createScript(
       'Content-Type': 'application/json',
     };
 
-    const trendScript = {
+    const trendScript = [{
       role: 'user',
       content: `해당 내용으로 숏폼 대본을 만들어줘
               
@@ -91,7 +91,7 @@ export async function createScript(
                 영상길이: ${length}
                 말투: ${tone}
                 `,
-    };
+    }];
 
     const data = {
       messages: trendScript,
